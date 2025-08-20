@@ -73,4 +73,4 @@ Overall: Remote Code Execution (RCE) with Admin-level precondition
 ## Video POC
 If you're unable to reproduce the issue exactly as described in the report, please refer to the following video demonstration (PoC) for a clear reproduction scenario:
 
-https://www.youtube.com/watch?v=b9M0nMDpMi0
+https://www.youtube.com/watch?v=C143wO_N40I
