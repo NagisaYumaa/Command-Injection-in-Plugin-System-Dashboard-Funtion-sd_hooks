@@ -26,16 +26,6 @@ $shell_output = shell_exec($shell_command);
 
 Because `$plugin_version` is directly controlled by plugin metadata, an Admin user can upload or edit a plugin with malicious version string to inject commands.
 
-## Impact
-
-Confidentiality: Read sensitive system and WordPress files
-
-Integrity: Modify/delete application or system files
-
-Availability: Execute destructive commands, causing DoS
-
-Overall: Remote Code Execution (RCE) with Admin-level precondition
-
 ## Proof of Concept (PoC)
 
 **Step1: Prepare Malicious Plugin**.
@@ -49,11 +39,27 @@ The tester creates a custom plugin with a malicious `Version` value in its heade
  * Version: 1.0; id ;
  */
 ```
+![alt](./img/1.png)
+
 **Step2: Trigger Vulnerable Functionality.**    
 
 The tester navigates to the plugin interface: `Hooks → View Hooks`
 
+![alt](./img/2.png)
+
 When the vulnerable function sd_hooks processes the plugin metadata, the malicious Version string is concatenated into a shell command and executed.
+![alt](./img/3.png)
+
+![alt](./img/4.png)
+## Impact
+
+Confidentiality: Read sensitive system and WordPress files
+
+Integrity: Modify/delete application or system files
+
+Availability: Execute destructive commands, causing DoS
+
+Overall: Remote Code Execution (RCE) with Admin-level precondition
 
 ## Recommendations
 
