@@ -4,7 +4,7 @@
 
 **Affected Function:** `sd_hooks` (Plugin: System Dashboard)
 
-**Impact:** Authenticated **Administrator** users can inject arbitrary system commands via unsanitized plugin metadata (`Version` field). Successful exploitation leads to **Remote Code Execution** under the web server user, allowing full compromise of the underlying host.
+**Impact:** Authenticated users with `Subscriber` or higher privileges have permission `manage options` can trigger arbitrary system command execution due to unsanitized use of plugin metadata (e.g., `Version` field). Successful exploitation results in `Remote Code Execution (RCE)` under the web server’s context, potentially leading to full compromise of the affected host.
 
 **CVSS v3.1 Score:** 8.8 (High)  
 **Vector:** AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H 
